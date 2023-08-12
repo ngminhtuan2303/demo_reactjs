@@ -5,6 +5,7 @@ import ReactPaginate from 'react-paginate';
 import ModalAddNew from './ModalAddNew';
 import ModalEditUser from './ModalEditUser';
 import ModalConfirm from './ModalConfirm';
+import ModalFaceSearch from './FaceSearch';
 
 const TableUsers = (props) => {
 
@@ -16,6 +17,7 @@ const TableUsers = (props) => {
     const [isShowModalDelete, setIsShowModalDelete] = useState(false);
     const [dataUserDelete, setDataUserDelete] = useState({});
     const [currentPage, setCurrentPage] = useState(0);
+    const [isShowModalSearchFace, setIsShowModalSearchFace] = useState(false);
     const PER_PAGE = 4;
 
     useEffect(() => {
@@ -26,6 +28,7 @@ const TableUsers = (props) => {
         setIsShowModalAddNew(false);
         setIsShowModalEditUser(false);
         setIsShowModalDelete(false);
+        setIsShowModalSearchFace(false);
     }
 
     const getUsers = async () => {
@@ -85,6 +88,10 @@ const TableUsers = (props) => {
         });
 
     return (<>
+        <button className="btn btn-success" onClick={() => {
+            setModalType({ mode: "search", data: null })
+            setIsShowModalSearchFace(true)
+        }}>Face search</button>
         <div className="my-3 add-new">
             <span><b>List Users:</b></span>
             <button className="btn btn-success" onClick={() => {
@@ -151,6 +158,11 @@ const TableUsers = (props) => {
             handleClose={handleClose}
             dataUserDelete={dataUserDelete}
             handleUpdateTable={handleUpdateTable}
+        />
+
+        <ModalFaceSearch
+            show={isShowModalSearchFace}
+            handleClose={handleClose}
         />
 
     </>)

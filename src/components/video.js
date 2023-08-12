@@ -294,7 +294,7 @@ const Video = ({ show, onHide }) => {
             results.image, 0, 0, canvasRef.current.width, canvasRef.current.height);
         if (results.multiFaceLandmarks) {
             for (const landmarks of results.multiFaceLandmarks) {
-                console.log(landmarks)
+                // console.log(landmarks)
                 drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, { color: '#FF3030', lineWidth: 2 });
                 drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYE, { color: '#30FF30', lineWidth: 2 });
                 drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, { color: '#E0E0E0', lineWidth: 1 });
